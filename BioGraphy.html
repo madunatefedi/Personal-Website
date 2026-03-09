@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tefedi Maduna portfolio</title>
+    <!-- Font Awesome 6 (free) for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/tefedi/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #0b0e14;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+       
+        .blurry-science-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            filter: blur(8px) brightness(0.5) saturate(1.8);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 180, 255, 0.25) 0%, transparent 25%),
+                radial-gradient(circle at 90% 70%, rgba(255, 100, 200, 0.25) 0%, transparent 35%),
+                radial-gradient(circle at 40% 80%, rgba(100, 255, 150, 0.2) 0%, transparent 30%),
+                repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 8px),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.15"><path d="M60 80 L70 50 L95 40 L115 55 L125 80 L115 105 L95 115 L70 105 L60 80" fill="none" stroke="%23aaccff" stroke-width="1.2" /><circle cx="95" cy="77" r="12" fill="%23336699" stroke="%2388ddff" stroke-width="1.5"/><text x="30" y="160" font-size="22" fill="%23b0e0ff" font-family="monospace">E = mc²</text><text x="140" y="40" font-size="18" fill="%23b0e0ff" font-family="monospace">🧬</text><path d="M160 150 q15 -20 30 -5 q10 10 -5 25 q-15 10 -25 -5" stroke="%23aaddff" fill="%234477aa40" stroke-width="1.8"/><circle cx="40" cy="40" r="10" fill="%234488bb40" stroke="%2399ddff" stroke-width="1.2"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150" opacity="0.1"><path d="M50 70 Q80 20 120 70 T190 70" stroke="white" fill="none" stroke-width="2" /><circle cx="130" cy="80" r="5" fill="white"/><text x="200" y="100" fill="white" font-size="30" font-family="Arial">⚛️</text><text x="10" y="130" fill="white" font-size="25">🔬</text></svg>');
+            background-repeat: repeat, repeat, repeat, repeat, repeat, repeat;
+            background-size: 400px 300px, 600px 400px, 500px 500px, auto, 300px 250px, 400px 200px;
+            background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 30px 70px, 200px 20px;
+            pointer-events: none;
+        }
+
+        /* main glass card */
+        .glass-card {
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(15, 25, 35, 0.55);
+           
+            border-radius: 3rem 2rem 3rem 2rem;
+            border: 1px solid rgba(120, 180, 255, 0.25);
+            box-shadow: 0 30px 50px -20px rgba(0,0,0,0.8), 0 0 0 1px rgba(210, 240, 255, 0.1) inset;
+            padding: 2.5rem 2rem;
+            color: #ebf3fe;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(140, 210, 255, 0.6);
+            box-shadow: 0 35px 55px -15px #001a33, 0 0 0 1px rgba(170, 230, 255, 0.3) inset;
+        }
+
+        h1, h2, h3 {
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 500;
+            background: linear-gradient(130deg, #eef9ff, #b1dcff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.25rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            border-left: 6px solid #5db0e0;
+            padding-left: 1.2rem;
+            margin: 2rem 0 1.2rem 0;
+            transition: 0.2s;
+            display: inline-block;
+        }
+        h2:hover {
+            border-left-color: #ffb87c;
+            transform: translateX(6px);
+            text-shadow: 0 0 8px #97ceff;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 350;
+            margin-bottom: 0.5rem;
+            color: #d3eaff;
+        }
+
+        /* profile header with picture above name */
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
+            border-bottom: 1px dashed rgba(140, 200, 255, 0.3);
+            padding-bottom: 1.8rem;
+        }
+
+        /* picture container with attractive border */
+        .profile-pic-frame {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #a0d0ff, #ffb88c, #c0a0ff);
+            padding: 1px;
+            box-shadow: 0 10px 25px -5px #001a33, 0 0 0 2px rgba(255,255,240,0.3) inset;
+            transition: all 0.3s ease;
+            margin-bottom: 0.2rem;
+        }
+
+        .profile-pic-frame:hover {
+            transform: scale(1.03) rotate(1deg);
+            box-shadow: 0 20px 35px -8px #445768, 0 0 0 3px rgba(255, 215, 140, 0.7) inset;
+            background: linear-gradient(145deg, #ffd6a0, #aad0ff, #ffb0d0);
+        }
+
+        .profile-image {
+            width: 200%;
+            height: 200%;
+            border-radius: inherit;
+            background: #183c57;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: rgba(255,255,255,0.9);
+            background-image: linear-gradient(145deg, #0f4c6b, #2b6c8f, #2c3a5e);
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.6);
+            text-shadow: 0 2px 5px black;
+        }
+
+        .name-tag {
+            text-align: center;
+        }
+        .name-tag h1 {
+            font-size: 1rem;
+            line-height: 7;
+            margin-bottom: 0.05rem;
+        }
+        .name-tag .tagline {
+            font-size: 1.2rem;
+            background: rgba(0, 60, 100, 0.35);
+            padding: 0.3rem 1.2rem;
+            border-radius: 50px;
+            border: 1px solid rgba(100, 190, 255, 0.35);
+            transition: 0.5s;
+            display: inline-block;
+            
+        }
+        .name-tag .tagline:hover {
+            border-color: #75c8ff;
+            background: rgba(20, 80, 130, 0.45);
+            transform: scale(1.02);
+        }
+
+        /* CV download row */
+        .cv-row {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: -4rem;
+            margin-bottom: 1rem;
+        }
+
+        .cv-download {
+            background: rgba(0, 153, 255, 0.12);
+            border: 1.1px solid #5da5d8;
+            border-radius: 2rem;
+            padding: 0.7rem 1rem;
+            font-size: 1.1rem;
+            font-weight: 200;
+            color: #e2f0ff;
+            cursor: pointer;
+            transition: 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: inherit;
+        }
+        .cv-download i {
+            font-size: 1.4rem;
+            color: #b2dcff;
+        }
+        .cv-download:hover {
+            background: #1e6e9f40;
+            border-color: #aae0ff;
+            box-shadow: 0 0 20px #00a3ff60;
+            transform: translateY(-3px) scale(1.02);
+        }
+        .cv-download:active {
+            transform: translateY(1);
+        }
+
+        /* cards grid */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin: 1.5rem 0 0.8rem 0;
+        }
+
+        .edu-item, .future-item, .qual-item {
+            background: rgba(8, 20, 33, 0.45);
+            border-radius: 2rem 1.2rem 2rem 1.2rem;
+            padding: 1.8rem 1.6rem;
+            border: 1px solid rgba(70, 150, 220, 0.25);
+            transition: all 0.3s cubic-bezier(0.2,0.9,0.3,1.2);
+            box-shadow: 0 8px 15px -10px #00000080;
+        }
+
+        .edu-item:hover, .future-item:hover, .qual-item:hover {
+            border-color: #6eb5ff;
+            background: rgba(18, 38, 58, 0.7);
+            transform: scale(1.02) translateY(-6px);
+            box-shadow: 0 25px 30px -15px #001a33, 0 0 0 2px rgba(140, 210, 255, 0.3) inset;
+        }
+
+        .edu-item i, .future-item i, .qual-item i {
+            font-size: 2.2rem;
+            background: linear-gradient(145deg, #a4d0ff, #5d9bcf);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .date-chip {
+            font-size: 0.9rem;
+            background: #1f496b60;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            margin: 0.7rem 0 0.3rem;
+            border: 1px solid #4280aa;
+            transition: 0.2s;
+        }
+        .date-chip:hover {
+            background: #336b96;
+            border-color: #a2d0ff;
+        }
+
+        .qual-list {
+            list-style: none;
+        }
+        .qual-list li {
+            margin: 0.9rem 0;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px dashed #40709040;
+            padding-bottom: 0.4rem;
+        }
+        .qual-list li i {
+            font-size: 1.3rem;
+            min-width: 2rem;
+            color: #89cbff;
+            transition: 0.2s;
+        }
+        .qual-list li:hover i {
+            transform: rotate(3deg) scale(1.2);
+            color: #ffbd7a;
+        }
+
+        .future-plan-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background: #0b1e2d80;
+            padding: 1rem 1.6rem;
+            border-radius: 2rem 1rem 2rem 1rem;
+            border: 1px dashed #568fc0;
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 700px) {
+            .cv-row {
+                margin-top: 1rem;
+                justify-content: flex-start;
+            }
+            .profile-header {
+                align-items: center;
+                text-align: center;
+            }
+            .name-tag {
+                text-align: center;
+            }
+            .profile-pic-frame {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        @media (max-width: 650px) {
+            h1 { font-size: 2.6rem; }
+            .glass-card { padding: 1.8rem; }
+        }
+
+        footer i {
+            transition: 0.25s;
+            font-size: 1.2rem;
+            margin: 0 0.2rem;
+        }
+        footer i:hover {
+            transform: scale(1.4) rotate(5deg);
+            color: #c4e2ff;
+            filter: drop-shadow(0 0 8px #5bb4ff);
+            cursor: default;
+        }
+        .future-item i, .edu-item i {
+            transition: 0.2s;
+        }
+        .future-item:hover i, .edu-item:hover i {
+            transform: scale(1.15) translateY(-3px);
+            color: #ffe396;
+            filter: drop-shadow(0 0 6px #f0b347);
+        }
+        .profile-pic-frame {
+            position: relative;
+        }
+    </style>
+</head>  
+ 
+<body >
+  
+   
+
+ <div class="blurry-science-bg"></div> 
+   
+
+    <main class="glass-card">
+        <div class="profile-header">
+            <div class="profile-pic-frame">
+                <div class="profile-image">
+
+                    <img src="IMG-20220812-WA0043.jpg" alt="Profile Picture" style="width: 100%;
+                     height: 100%; object-fit: cover; border-radius: inherit;">
+                     
+                </div>
+            </div>
+            <div class="name-tag">
+                
+               <a href="Index.html"><button><b> BACK</b></button></a>
+
+                <b><h1>Tefedi Maduna</h1></b>
+                <span class="tagline"><i class="fas fa-dna" ></i>Field Service Engineer(Clinical Engineer) || Aspiring Software Engineer || Tech Enthusiast</span>
+            </div>
+
+        </div>
+
+        <div class="cv-row">
+            <!-- REAL PDF DOWNLOAD BUTTON: points to existing cv.pdf in your server folder -->
+            <a href="MADUNA TR (CV)" download="Tefedi_Maduna_CV_2026.pdf" class="cv-download" id="downloadCVBtn">
+                <i class="fas fa-file-pdf"></i> Download CV
+                <i class="fas fa-download" style="font-size: 1.1rem;"></i>
+            </a>
+        </div>
+
+        <h2><i class="fas fa-graduation-cap" style="margin-right: 1rem;"></i> Educational Journey</h2>
+        <div class="grid-2col">
+            <div class="edu-item">
+                <i class="fas fa-microscope"></i>
+                <b><h3>NDip:National Diploma Electrical Engineering (Clinical) NQF Level 6</h3></b>
+                <div class="date-chip">2011 – 2014 (Graduated 2015)</div>
+                <p style="opacity: 0.9;">Tshwane University of Technology : Modules: Bio-Systems,Medical Equipments,Mathematics,Electrical Engineering,Electronics,Digital Systems,Software Design
+                    Control Systems.
+                </p>
+                <br><br>
+            <div class="edu-item">
+                <i class="fas fa-satellite"></i>
+                <h3><b>(BSc)Bachelor of Information Technology NQF Level 7</h3></b>
+                <div class="date-chip">2023 - Dec 2025</div>
+                <p style="opacity: 0.9;">Richfiled Graduate Institute of Technology: 
+                    Modules : Web Technology,Programming (Python,Java,Mobile Development ,Java Script,HTML, CSS, PHP,C++),Operating Systems, Software Engineering,
+                    Big Data and IOT,Machine Learning, Artificial Intelligence, Human Computer InteractiveDatabase Management(SQL),
+                    Networks.Information Systems,Cloud Computing,Internet Programming,</p>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: flex-start; margin: 0.5rem 0 1rem 0;">
+            <div class="edu-item" style="max-width: 300px; padding: 1rem 1.5rem;">
+                <i class="fas fa-square-root-alt"></i>
+                <h3><b>Bio Graphy</b> <span style="font-weight: 200; font-size: 0.9rem;">(2026 last updated)</span></h3>
+               
+ 
+<p style="opacity: 0.9;">
+I am a dedicated technology professional born and raised in Phuthaditjhaba, Free State,now based in Gauteng . My educational journey has been marked by perseverance.
+ After matriculating, I pursued a BSc in Chemistry at the University of the Free State in 2010 but was unable to complete the degree due to financial constraints.
+
+Undeterred, I shifted my focus to engineering and enrolled at the Tshwane University of Technology in 2011.
+ I graduated in 2015 with a National Diploma in Electrical Engineering, specializing in Clinical Engineering. 
+ This qualification launched a successful 12-year career as a Field Service Engineer and as a Clinical Engineer in the healthcare industry,
+  where I have gained extensive technical expertise in servicing and maintaining a wide range of medical devices.
+<p>
+Despite my success in clinical engineering, my passion for technology has always pulled me toward the software side. 
+I have a deep love for coding and the logic of information systems. To formalize this passion,</p>
+ I registered at Richfield Graduate Institute of Technology in 2023 for a BSc in Information Technology, which I will complete in December 2025.
+
+I am now seeking opportunities to merge my decade-long practical engineering experience with my new qualifications in IT,
+ bringing a unique, cross-disciplinary perspective to the tech industry.   
+ </p>          
+
+
+</p>
+            </div>
+        </div>
+        <div class="qual-item" >
+            <ul class="qual-list">
+                 <h2> <i class="fas fa-certificate" style="margin-right: 1rem;">Qualifications & Skills:</h2></i> 
+                <li><i class="fas fa-code"></i> Python (NumPy,Pandas SciPy,data visualization tools like Matplotlib,TensorFlow) · Data Science & Analytics,Artificial Intelligence & Machine Learning</li>
+
+                <li><i class="fas fa-chart-line"></i> C++: Programming Principles(Understanding fundamental logic, conditional statements (if-else, switch-case), and loops (for, while))</li>
+                                             <li><i class="fas fa-chart-line"></i>Object-Oriented Programming (OOP),Data Structures and Algorithms,Standard Template Library (STL),Performance Optimization and : Knowledge of creating thread-safe code and managing memory efficiently</li>
+                <li><i class="fas fa-atom"></i> HTML & CSS: Basic Syntax and Structure,Forms and Tables,Multimedia Integration,Accessibility,Styling Elements,
+                    Layout Design,Responsive Web Design,Animations and Effects and Separation of Concerns</li>
+                <li><i class="fas fa-language"></i>JAVA: Object-Oriented Programming (OOP), Data Structures and Algorithms, Collections Framework</li>
+                <li><i class="fas fa-tools"></i> SQL: Database Design, Query Optimization, Data Modeling</li>
+                    <li><i class="fas fa-tools"></i> Software Development: Version Control (Git), Agile Methodologies, Software Testing and Debugging, DevOps Basics</li>
+                     
+
+            </ul>
+        </div>
+
+    </main>
+
+    <!-- JavaScript to handle missing cv.pdf gracefully and provide fallback -->
+    <script>
+        (function() {
+            const downloadBtn = document.getElementById('downloadCVBtn');
+
+
+            downloadBtn.addEventListener('click', function(event) {
+  
+                event.preventDefault();  // temporarily prevent to check
+
+                const realPdfPath = 'MADUNA TR (CV).pdf'; // the actual file you want to serve
+                const fileName = 'Tefedi_Maduna_CV_2026.pdf';
+
+                fetch(realPdfPath, { method: 'HEAD', cache: 'no-cache' })
+                    .then(response => {
+                        if (response.ok) {
+                            // file exists, perform real download
+                            const link = document.createElement('a');
+                            link.href = realPdfPath;
+                            link.download = fileName;
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                        } else {
+                            // file not found, use fallback simulated pdf
+                            useFallbackCV();
+                        }
+                    })
+                    .catch(() => {
+                        // network error or file missing, use fallback
+                        useFallbackCV();
+                    });
+            });
+            
+
+
+        })
+        
+    </script>
+</body>
+</html>

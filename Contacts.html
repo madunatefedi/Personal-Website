@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Details</title>
+    <!-- Font Awesome for icons (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #f4f7fb;
+            color: #3d5872;
+            line-height: 1.5;
+            padding: 2rem 1.5rem;
+        }
+
+        /* main container – soft card look */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            border-radius: 2.5rem;
+            box-shadow: 0 20px 40px -12px rgba(41, 35, 126, 0.25);
+            padding: 2.5rem 2rem;
+            border: 1px solid rgba(87, 8, 74, 0.253);
+        }
+
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            margin: 2.5rem 0 1.2rem 0;
+            border-left: 8px solid #3b8fc2;
+            padding-left: 1.2rem;
+            color: #144a66;
+        }
+
+        .card-caption {
+            padding: 1rem 1.2rem 1.2rem;
+            background: white;
+            font-weight: 500;
+            border-top: 1px solid #cde2f0;
+        }
+
+        .card-caption i {
+            color: #3b8fc2;
+            margin-right: 0.4rem;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: #e4f0fa60;
+            border-radius: 3rem 1.5rem 3rem 1.5rem;
+            padding: 2rem 2.2rem;
+            margin: 1.5rem 0 0.5rem;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .contact-info {
+            flex: 2;
+            min-width: 240px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.3rem;
+            margin: 1.2rem 0;
+            background: rgba(255,255,255,0.5);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4rem;
+            box-shadow: 0 2px 8px #cddde9;
+            transition: 0.15s;
+        }
+
+        .contact-item:hover {
+            background: white;
+            transform: scale(1.02);
+            box-shadow: 0 8px 18px #b6d3e9;
+        }
+
+        .contact-item i {
+            width: 2.2rem;
+            color: #1c6c9c;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .contact-item a {
+            text-decoration: none;
+            color: #124b66;
+            font-weight: 500;
+        }
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255,255,255,0.4);
+            border-radius: 3rem;
+            padding: 1.5rem;
+        }
+
+        .social-icons a {
+            color: #1d4f6e;
+            font-size: 2.8rem;
+            transition: 0.2s;
+            line-height: 1;
+        }
+        .social-icons a:hover {
+            transform: scale(1.2) rotate(2deg);
+            color: #0b2c40;
+        }
+
+
+
+        /* simple responsive touches */
+        @media (max-width: 600px) {
+            .container { padding: 1.8rem; }
+            h1 { font-size: 2.4rem; }
+            .bio-row { gap: 1.5rem; }
+            .profile-frame { width: 140px; height: 140px; }
+            .bio-picture { flex: 0 0 140px; }
+        }
+    </style>
+</head>
+<body>
+      <a href="Index.html" ><button class="fas fa-bars "><b> BACK</b></button></a>
+    <div class="container">
+       
+      <!-- ========== CONTACTS & SOCIAL ========= -->
+        <h2><i class="fas fa-address-card"></i>  connect with me</h2>
+        <div class="contact-flex">
+            <div class="contact-info">
+                <!-- email -->
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>madunatefedi@gmail.com</span>
+            </div>
+                <!-- phone (optional) -->
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+27 83 3582 797</span>
+                </div>
+                <!-- location -->
+                <div class="contact-item">
+                    <i class="fas fa-map-pin"></i>
+                    <span>Johannesburg,South Africa</span>
+
+            </div>
+                <!-- website (could be your portfolio) -->
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <a href="#">madunatefedi.com</a>
+                </div>
+            </div>
+
+            <!-- social media icons (clickable) -->
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-x"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+            </div>
+
+ 
+
+
+</body>
+</html>
