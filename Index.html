@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My personal space · bio & media</title>
+    <!-- Font Awesome for icons (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #f4f7fb;
+            color: #1e2b37;
+            line-height: 1.5;
+            padding: 2rem 1.5rem;
+        }
+
+        /* ---------- menu bar (simple, sticky, attractive) ---------- */
+        .menu-bar {
+            max-width: 1100px;
+            margin: 0 auto 1.8rem auto;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 60px;
+            padding: 0.8rem 2rem;
+            box-shadow: 0 8px 22px rgba(30, 60, 90, 0.12);
+            border: 1px solid rgba(75, 109, 160, 0.7);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo a {
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: #144a66;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #1f5a7e;
+            padding: 0.3rem 0.2rem;
+            border-bottom: 3px solid transparent;
+            transition: 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .nav-links a i {
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #3b8fc2;
+            color: #0c344b;
+            transform: translateY(-2px);
+        }
+
+        /* main container – soft card look */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            border-radius: 2.5rem;
+            box-shadow: 0 20px 40px -12px rgba(0,20,40,0.25);
+            padding: 2.5rem 2rem;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            color: #0c344b;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            margin: 2.5rem 0 1.2rem 0;
+            border-left: 8px solid #3b8fc2;
+            padding-left: 1.2rem;
+            color: #144a66;
+            scroll-margin-top: 6rem;  /* so that menu doesn't cover heading when jumping */
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #1f5a7e;
+            margin-bottom: 0.75rem;
+        }
+
+        /* home intro (soft anchor) */
+        #home {
+            scroll-margin-top: 5rem;
+        }
+
+        /* BIOGRAPHY SECTION */
+        .bio-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            align-items: center;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .bio-picture {
+            flex: 0 0 180px;
+        }
+
+        .profile-frame {
+            width: 180px;
+            height: 180px;
+            border-radius: 50% 30% 50% 30% / 40% 50% 40% 50%;
+            background: linear-gradient(135deg, #a2cff9, #e1c7a8);
+            padding: 6px;
+            box-shadow: 0 18px 25px -10px #2b5f7a;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            background: #2c647e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            background-image: linear-gradient(145deg, #145a7a, #2f809e);
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .bio-text {
+            flex: 1;
+            background: #ffffffc0;
+            padding: 1.8rem 2rem;
+            border-radius: 2.5rem 1.2rem 2.5rem 1.2rem;
+            box-shadow: 0 6px 18px #d9e2ec;
+            border: 1px solid white;
+            font-size: 1.2rem;
+        }
+
+        .bio-text p {
+            margin-bottom: 1rem;
+        }
+
+        .bio-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* MEDIA GALLERY (videos + pictures) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .media-card {
+            background: white;
+            border-radius: 2rem 1rem 2rem 1rem;
+            overflow: hidden;
+            box-shadow: 0 12px 28px -12px #274c6b50;
+            transition: transform 0.2s ease, box-shadow 0.3s;
+            border: 1px solid #ffffffd0;
+        }
+
+        .media-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px -14px #144e70;
+        }
+
+        .media-pic {
+            width: 100%;
+            height: 200px;
+            background-color: #b2d4ec;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: 0.8rem;
+            color: white;
+            font-weight: 600;
+            text-shadow: 0 2px 6px black;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #1c4b66;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .video-placeholder i {
+            font-size: 3.5rem;
+            opacity: 0.9;
+            transition: 0.2s;
+        }
+
+        .media-card:hover .video-placeholder i {
+            transform: scale(1.1);
+            color: #ffdc9a;
+        }
+
+        .card-caption {
+            padding: 1rem 1.2rem 1.2rem;
+            background: white;
+            font-weight: 500;
+            border-top: 1px solid #cde2f0;
+        }
+
+        .card-caption i {
+            color: #3b8fc2;
+            margin-right: 0.4rem;
+        }
+
+        /* CONTACT SECTION */
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: #e4f0fa60;
+            border-radius: 3rem 1.5rem 3rem 1.5rem;
+            padding: 2rem 2.2rem;
+            margin: 1.5rem 0 0.5rem;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .contact-info {
+            flex: 2;
+            min-width: 240px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.3rem;
+            margin: 1.2rem 0;
+            background: rgba(255,255,255,0.5);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4rem;
+            box-shadow: 0 2px 8px #cddde9;
+            transition: 0.15s;
+        }
+
+        .contact-item:hover {
+            background: white;
+            transform: scale(1.02);
+            box-shadow: 0 8px 18px #b6d3e9;
+        }
+
+        .contact-item i {
+            width: 2.2rem;
+            color: #1c6c9c;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .contact-item a {
+            text-decoration: none;
+            color: #124b66;
+            font-weight: 500;
+        }
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255,255,255,0.4);
+            border-radius: 3rem;
+            padding: 1.5rem;
+        }
+
+        .social-icons a {
+            color: #1d4f6e;
+            font-size: 2.8rem;
+            transition: 0.2s;
+            line-height: 1;
+        }
+        .social-icons a:hover {
+            transform: scale(1.2) rotate(2deg);
+            color: #0b2c40;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+
+        /* responsive menu */
+        @media (max-width: 700px) {
+            .menu-bar {
+                flex-direction: column;
+                gap: 0.8rem;
+                border-radius: 40px;
+                padding: 1rem;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 1.2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 1.8rem; }
+            h1 { font-size: 2.4rem; }
+            .bio-row { gap: 1.5rem; }
+            .profile-frame { width: 140px; height: 140px; }
+            .bio-picture { flex: 0 0 140px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== MENU BAR (home, biography, contacts) ========= -->
+    <div class="menu-bar">
+        <div class="logo">
+            <a href="#home"><i class="fas fa-image"></i> Tefedi R Maduna</a>
+        </div>
+        <div class="nav-links">
+            <a href="#home"><i class="fas fa-house"></i> Home</a>
+            <a href="BioGraphy.html"><i class="fas fa-feather"></i> Biography</a>
+            <a href="Contacts.html" ><i class="fas fa-address-card"></i> Contacts</a>
+           <!--<a href="https://www.w3schools.com/">Press Me</a>--> 
+        </div>
+    </div>
+    <!-- main container with ID anchors for menu -->
+    <div class="container">
+        <!-- HOME section (anchor) -->
+        <section id="home">
+            <h1>Hi, I'm Tefedi</h1>
+            <p style="font-size: 1.4rem; color: #2f6680;">Field Service Engineer(Clinical Engineer) | Bio Medical Engineer|Aspiring Software Developer |
+                <br>Tshwane University of Technology & Richfield Graduate Institute of Technology Alumni </p>
+        </section>
+        <!-- ========== MEDIA GALLERY : VIDEOS & PICTURES ========= -->   
+        <h2 style="margin-top: 1.5rem;"><i class="fas fa-camera-retro" style="margin-right: 1rem;"></i>My galaries</h2>
+        <div class="gallery-grid">
+
+            <!-- picture card 1 -->
+            <div class="media-card">
+                <div class="media-pic" style="background-image: url('20250218_232543.jpg');">
+                    <span style="background: #00000060; padding: 0.2rem 1rem; border-radius: 40px;">⛰️ Norway</span>
+                </div>
+                <div class="card-caption">
+                    <i class="fas fa-laptop-code"></i> Working on my projects
+                </div>
+            </div>
+
+            <!-- picture card 2 -->
+            <div class="media-card">
+                <div class="media-pic" style="background-image: url('20250408_103736.jpg');">
+                    <span style="background: #00000060; padding: 0.2rem 1rem; border-radius: 40px;">🏔️ Alps</span>
+                </div>
+                <div class="card-caption">
+                    <i class="fas fa-tools"></i> Installation of Microscope
+                </div>
+            </div>
+
+   <!-- video card 1 - CORRECTED STRUCTURE -->
+<div class="media-card">
+    <video width="100%" height="200" autoplay muted loop style="object-fit: cover; background: #1c4b66;">
+        <source src="Clinical Engineering-1.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+    </video>
+    <div class="card-caption">
+        <i class="fas fa-video"></i> During Covid19
+    </div>
+</div>
+
+            <!-- extra picture card 3 -->
+            <div class="media-card">
+                <div class="media-pic" style="background-image: url('20250403_205008.jpg');">
+                    <span style="background: #00000060; padding: 0.2rem 1rem; border-radius: 40px;">📖 writing</span>
+                </div>
+                <div class="card-caption">
+                    <i class="fas fa-book"></i> Assignments
+                </div>
+            </div>
+            <div class="media-card">
+                <div class="media-pic" style="background-image: url('20250829_130129.jpg');">
+                    <span style="background: #00000060; padding: 0.2rem 1rem; border-radius: 40px;">📖 writing</span>
+                </div>
+                <div class="card-caption">
+                    <i class="fas fa-book"></i> Performing Preventive Maintenance
+                </div>
+            </div>
+            <!-- one more video idea -->
+                         <div class="media-card">
+                <div class="media-pic" style="background-image: url('20250513_124946.jpg');">
+                    <span style="background: #00000060; padding: 0.2rem 1rem; border-radius: 40px;">📖 writing</span>
+                </div>
+                <div class="card-caption">
+                    <i class="fas fa-tools"></i> Attending Technical Training 
+                </div>
+            </div>
+     
+        </div>
+        <footer>
+            <i class="fas fa-dna"></i>   built with curiosity by Tefedi Maduna· 2026   <i class="fas fa-microscope"></i>
+        </footer>
+    </div>
+
+    <!-- tiny JavaScript for smooth scroll (optional) and placeholder alerts -->
+   <script>
+    (function() {
+        // Smooth scroll ONLY for internal anchor links (links starting with '#')
+        const menuLinks = document.querySelectorAll('.nav-links a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                // Check if the link is an internal anchor (starts with '#')
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+                // If it's a link to another page (like BioGraphy.html), do nothing and let the browser navigate normally.
+            });
+        });
+    })();
+</script>
+</body>
+</html>
